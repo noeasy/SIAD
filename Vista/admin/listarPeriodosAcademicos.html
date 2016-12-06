@@ -1,0 +1,139 @@
+
+
+<div id="barra-superior" class="header-v8">
+   <input type="button" class="navbar-right btn btn-sesion" ng-click="cerrarS();" value="Cerrar Sesion">
+    </div>
+
+
+    <div class="parallax-quote parallaxBg" style="padding: 50px 30px;">
+         
+                <div class="parallax-quote-in" style="padding: 0px;">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-xs-5">
+                            <a >
+                                <img id="logo-header" class="img-responsive"
+                                     src="Vista/img/logo_ufps.png" alt="Logo Alcaldía">
+                            </a>
+                        </div>
+                        <div class="col-md-1 col-ms-1 col-xs-2 pull-right">
+                            <a><img class="header-banner img-responsive"
+                                                                   src="Vista/img/escudo_colombia.png"
+                                                                   alt="Escudo de Colombia"></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li  ><a href="#/administrador"><span class="glyphicon glyphicon-list-alt"></span> Listar Archivos</a></li>
+           <li  ><a href="#/administrador_subirDocumento"><span class="glyphicon glyphicon-cloud"></span> Subir archivo</a></li>
+           <li ><a href="#/administrador_registrarPersonal"><span class="glyphicon glyphicon-user"></span> Registrar Personal</a></li>
+            <li ><a href="#/administrador_listarPersonal"><span class="glyphicon glyphicon-book"></span> Listar Personal</a></li>
+           <li ><a href="#/administrador_asignarArchivos"><span class="glyphicon glyphicon-tags"></span> Asignar archivos del Personal</a></li>
+        <li class="dropdown active">
+          <a  class="dropdown-toggle acomodarC" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-indent-right"></span> ANALISIS SABER PRO<span class="caret"></span></a>
+          <ul class="dropdown-menu  acomodarC">
+           <li ><a href="#/administrador_RegistroPeriodoAcademico">Registrar Periodo Academico</a></li>
+            <li class="active"><a href="#/administrador_ListadoPeriodosAcademicos">Listar Periodos Academico</a></li>
+            <li ><a href="#/administrador_SubirSaberPro">Subir Excel</a></li>
+            <li><a href="#/administrador_AnalisisSaberPro">Analisis Individual</a></li>
+            <li><a href="#/administrador_AnalisisSaberProGeneral">Analisis General</a></li>
+            <li ><a href="#/administrador_EliminacionSaberPro">Eliminacion</a></li>
+            
+          </ul>
+        </li>
+        <li class="dropdown ">
+          <a  class="dropdown-toggle acomodarC" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span>Configuraciones<span class="caret"></span></a>
+          <ul class="dropdown-menu  acomodarC">
+            <li ><a href="#/administrador_CambioContrasena">Cambio de contraseña</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <div class="col-md-12 "  ng-cloak>
+<center>
+   <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Periodo Academico</th>
+      <th>Columna Comunicacion Escrita</th>
+      <th>Columna Lectura Critica</th>
+      <th>Columna Razonamiento Cuantitativo</th>
+      <th>Accion</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr ng-repeat="periodo in data2 ">
+        <td>{{periodo.nombrePeriodo}}</td>
+        <td>{{periodo.comunicacion}}</td>
+        <td>{{periodo.lectura}}</td>
+        <td>{{periodo.razonamiento}}</td>
+        
+        <td>
+    <input type="button" class="btn btn-success"  ng-click="mostrarDatosModal(periodo.id,periodo.nombrePeriodo,periodo.comunicacion,periodo.lectura,periodo.razonamiento);" data-toggle="modal" data-target="#myModal" value="Actualizar">
+       
+ <input type="button" class="btn btn-danger"  ng-click="eliminarPeriodo(periodo.id,periodo.nombrePeriodo);" value="Eliminar">
+
+        
+        </td>
+
+    </tr>
+  </tbody>
+</table>
+</center>
+  </div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Actualizacion Periodo Academico</h4>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" class="form-control" id="nombres" name="nombres" ng-model="idEm"  required>
+     
+         <input type="hidden" class="form-control" id="nombres" name="nombres" ng-model="nombres"  required>
+
+    
+         <label for="pwd">Periodo Academico :</label>
+         <input type="text" class="form-control" id="apellidos" name="apellidos" ng-model="periodo" ng-disabled="desactivarCC" required>
+    <br>
+          <label for="pwd">Celda De Excel-Comuicacion Escrita:</label>
+         <input type="text" class="form-control" id="apellidos" name="apellidos" ng-model="comunicacion"  required>
+  <br>
+         <label for="pwd">Celda De Excel-Lectura critica:</label>
+         <input type="text" class="form-control" id="apellidos" name="apellidos" ng-model="lectura"  required>
+  <br>
+         <label for="pwd">Celda De Excel-Razonamiento Cuantitativo:</label>
+         <input type="text" class="form-control" id="apellidos" name="apellidos" ng-model="razonamiento"  required>
+  <br>
+        
+         <br>
+        <button type="button" class="btn btn-danger" ng-click="modificarDatos();" > Actualizar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>

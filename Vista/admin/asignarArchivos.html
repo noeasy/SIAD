@@ -1,0 +1,106 @@
+
+
+<div id="barra-superior" class="header-v8">
+   <input type="button" class="navbar-right btn btn-sesion" ng-click="cerrarS();" value="Cerrar Sesion" >
+    </div>
+
+
+    <div class="parallax-quote parallaxBg" style="padding: 50px 30px;">
+         
+                <div class="parallax-quote-in" style="padding: 0px;">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-xs-5">
+                            <a >
+                                <img id="logo-header" class="img-responsive"
+                                     src="Vista/img/logo_ufps.png" alt="Logo Alcaldía">
+                            </a>
+                        </div>
+                        <div class="col-md-1 col-ms-1 col-xs-2 pull-right">
+                            <a ><img class="header-banner img-responsive"
+                                                                   src="Vista/img/escudo_colombia.png"
+                                                                   alt="Escudo de Colombia"></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+          <li  ><a href="#/administrador"><span class="glyphicon glyphicon-list-alt"></span> Listar Archivos</a></li>
+           <li  ><a href="#/administrador_subirDocumento"><span class="glyphicon glyphicon-cloud"></span> Subir archivo</a></li>
+           <li ><a href="#/administrador_registrarPersonal"><span class="glyphicon glyphicon-user"></span> Registrar Personal</a></li>
+            <li  ><a href="#/administrador_listarPersonal"><span class="glyphicon glyphicon-book"></span> Listar Personal</a></li>
+           <li class="active" ><a href="#/administrador_asignarArchivos"><span class="glyphicon glyphicon-tags"></span> Asignar archivos del Personal</a></li>
+          <li class="dropdown ">
+          <a  class="dropdown-toggle acomodarC" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-indent-right"></span> ANALISIS SABER PRO<span class="caret"></span></a>
+          <ul class="dropdown-menu  acomodarC">
+            <li ><a href="#/administrador_RegistroPeriodoAcademico">Registrar Periodo Academico</a></li>
+            <li ><a href="#/administrador_ListadoPeriodosAcademicos">Listar Periodos Academico</a></li>
+            <li ><a href="#/administrador_SubirSaberPro">Subir Excel</a></li>
+            <li><a href="#/administrador_AnalisisSaberPro">Analisis Individual</a></li>
+            <li><a href="#/administrador_AnalisisSaberProGeneral">Analisis General</a></li>
+            <li ><a href="#/administrador_EliminacionSaberPro">Eliminacion</a></li>
+            
+          </ul>
+        </li> 
+        <li class="dropdown ">
+          <a  class="dropdown-toggle acomodarC" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span>Configuraciones<span class="caret"></span></a>
+          <ul class="dropdown-menu  acomodarC">
+            <li ><a href="#/administrador_CambioContrasena">Cambio de contraseña</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <div class="col-sm-9"  ng-cloak>
+        <table class="table table-bordered centrarTabla">
+  <thead>
+    <tr>
+      <th>Nombre Archivo</th>
+      <th>Descripcion</th>
+      
+      <th>Empleado</th>
+      <th>Accion</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr ng-repeat="archivo in data">
+        <td>{{archivo.nombre}}</td>
+        <td>{{archivo.descripcion}}</td>
+       
+         <td>
+          
+          
+     <select class="form-control" id="{{archivo.id}}" required>
+              <option value="">---Please select---</option>
+              <option ng-repeat="option in data2" value="{{option.nombres}}"  >{{option.nombres}}</option>
+              <option  >Todos los empleados</option>
+    </select>
+     
+      <!--
+      <label ng-repeat="option in data2" ng-model="{{archivo.id}}" class="checkbox"><input type="checkbox" ng-repeat="option in data2" value="{{option.nombres}}">{{option.nombres}}</label>
+       -->   
+  
+         </td>
+        <td><button class="btn btn-success" ng-click="asignar(archivo.id);">Asignar</button></td>
+
+    </tr>
+  </tbody>
+</table>
+   
+  </div>

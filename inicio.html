@@ -1,0 +1,143 @@
+
+    <div id="barra-superior" class="header-v8">
+   <input type="button" class="navbar-right btn btn-sesion" value="iniciar Sesion" data-toggle="modal" data-target="#myModal">
+    </div>
+
+
+	  <div class="parallax-quote parallaxBg" style="padding: 50px 30px;">
+         
+                <div class="parallax-quote-in" style="padding: 0px;">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-xs-5">
+                            <a href="https://ugad.ufps.edu.co/">
+                                <img id="logo-header" class="img-responsive"
+                                     src="https://ugad.ufps.edu.co/assets/img/header/logo_ufps.png" alt="Logo Alcaldía">
+                            </a>
+                        </div>
+                        <div class="col-md-1 col-ms-1 col-xs-2 pull-right">
+                            <a href="http://www.colombia.co/"><img class="header-banner img-responsive"
+                                                                   src="https://ugad.ufps.edu.co/assets/img/header/escudo_colombia.png"
+                                                                   alt="Escudo de Colombia"></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="acomodarBusqueda">
+            
+                 <label for="pwd">Buscar:</label>
+                 <input type="text" class="acomodarSel " ng-model="busqueda.nombre" size="40" >
+
+        </li>
+      </ul>
+      
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+         <div class="col-sm-6">
+
+
+</div>
+<br>
+ 
+<div class="col-sm-10 centrarTabla"  ng-cloak>
+
+
+   <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Clasificacion</th>
+      <th>Archivo</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr ng-repeat="archivo in data  | filter:busqueda | startFromGrid: currentPage * pageSize | limitTo: pageSize ">
+        <td>{{archivo.nombre}}</td>
+        <td>{{archivo.descripcion}}</td>
+        <td>{{archivo.clasificacion}}</td>
+        <td>
+        
+          <a href='Modelo/{{archivo.ruta}}'><img class="img-responsive img-thumbnail" src="Vista/img/archivo.png"></a>
+
+        </td>
+
+    </tr>
+  </tbody>
+</table>
+<center>
+<div class='btn-group'>
+            <button type='button' class='btn btn-default' ng-disabled='currentPage == 0' ng-click='currentPage = currentPage - 1'>&laquo;</button>
+            <button type='button' class='btn btn-default' ng-disabled='currentPage == page.no - 1' ng-click='setPage(page.no)' ng-repeat='page in pages'>{{page.no}}</button>
+            <button type='button' class='btn btn-default' ng-disabled='currentPage >= data.length/pageSize - 1', ng-click='currentPage = currentPage + 1'>&raquo;</button>
+ </div>
+</center>
+
+
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Inicio De Sesion</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+    <div class="row" >
+        <div class="col-sm-6">
+            <h1 class="text-center login-title">.</h1>
+            <div class="account-wall borderLogin">
+                <img class="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                    alt=""><br>
+                <form class="form-signin">
+                <label>Usuario</label>
+                <input type="text" class="form-control" ng-model="usuario" placeholder="Usuario" required autofocus><br>
+                <label>Contraseña</label>
+                <input type="password" class="form-control" ng-model="contrasena" placeholder="Contraseña" required>
+               
+                <!--
+                <label class="checkbox pull-left">
+                    <input type="checkbox" value="remember-me">
+                    Remember me
+                </label>
+                -->
+               
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="iniciarS();">Iniciar Sesion</button>
+      </div>
+    </div>
+  </div>
+</div>

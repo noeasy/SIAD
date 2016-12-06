@@ -1,0 +1,104 @@
+
+    <div id="barra-superior" class="header-v8" >  <!-- ng-controller="inicioS" -->
+    <label class="acomodarLabel">BIENVENIDO:</label>  <label class="acomodarLabel" id="labelEm"></label>
+
+   <input type="button" class="navbar-right btn btn-sesion" ng-click="cerrarS();" value="Cerrar Sesion">
+    </div>
+
+
+    <div class="parallax-quote parallaxBg" style="padding: 50px 30px;">
+         
+                <div class="parallax-quote-in" style="padding: 0px;">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-xs-5">
+                            <a >
+                                <img id="logo-header" class="img-responsive"
+                                     src="Vista/img/logo_ufps.png" alt="Logo Alcaldía">
+                            </a>
+                        </div>
+                        <div class="col-md-1 col-ms-1 col-xs-2 pull-right">
+                            <a ><img class="header-banner img-responsive"
+                                                                   src="Vista/img/escudo_colombia.png"
+                                                                    alt="Escudo de Colombia"></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+         <li  ><a href="#/vicerrectoria">Inicio</a></li>
+        <li class="active" ><a href="#/vicerrectoria_Personal">Archivos personales</a></li>
+      </ul>
+    <div class="navbar-right">
+      <li class="acomodarBusqueda ">
+            
+                 <label for="pwd">Buscar:</label>
+                 <input type="text" class="acomodarSel " ng-model="busqueda.nombre" size="40" >
+
+        </li>
+    </div>  
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+         <div class="col-sm-6">
+
+
+</div>
+<br>
+ 
+<div class="col-sm-10 centrarTabla"  ng-cloak>
+<input type="hidden" id="usuarioS" >
+
+   <table class="table table-bordered ">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Clasificacion</th>
+      <th>Archivo</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr ng-repeat="archivo in dataP | filter:busqueda | startFromGrid: currentPage * pageSize | limitTo: pageSize ">
+        <td>{{archivo.nombre}}</td>
+        <td>{{archivo.descripcion}}</td>
+        <td>{{archivo.clasificacion}}</td>
+        <td>
+        
+          <a href='Modelo/{{archivo.ruta}}'><img class="img-responsive img-thumbnail" src="Vista/img/archivo.png"></a>
+
+        </td>
+
+    </tr>
+  </tbody>
+</table>
+<center>
+<div class='btn-group'>
+            <button type='button' class='btn btn-default' ng-disabled='currentPage == 0' ng-click='currentPage = currentPage - 1'>&laquo;</button>
+            <button type='button' class='btn btn-default' ng-disabled='currentPage == page.no - 1' ng-click='setPage(page.no)' ng-repeat='page in pages'>{{page.no}}</button>
+            <button type='button' class='btn btn-default' ng-disabled='currentPage >= dataP.length/pageSize - 1', ng-click='currentPage = currentPage + 1'>&raquo;</button>
+ </div>
+</center>
+
+
+
+
+
+
+</div>
